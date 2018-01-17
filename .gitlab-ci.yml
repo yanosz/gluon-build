@@ -10,7 +10,7 @@ build:
   - mkdir -p ccache
   - export CCACHE_BASEDIR=${PWD}
   - export CCACHE_DIR=${PWD}/ccache
-  - mkdir downloads/
+  - mkdir -p downloads/
   script:
   - make FORCE_UNSAFE_CONFIGURE=1 CC='ccache gcc' DL_DIR=${PWD}/downloads
   - eval $(ssh-agent -s)
