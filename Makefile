@@ -47,6 +47,7 @@ dist/%: init site-%
 	make -C gluon update
 	make -C gluon all GLUON_TARGET=ar71xx-generic -j9
 	mv $(PWD)/gluon/output $(PWD)/dist/$*
+	cp -a site-$* $(PWD)/dist/$*/site-$*
 	echo "Git status hood $*" >> $(PWD)/dist/log.txt
 	cd $(PWD)/site-$*; git branch -v >> $(PWD)/dist/log.txt
 
