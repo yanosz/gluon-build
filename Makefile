@@ -53,7 +53,7 @@ dist/%: init site-%
 	#x86-targets
 	make -j6 -C gluon all GLUON_TARGET=x86-generic V=99 2>> $(PWD)/err.txt >> $(PWD)/out.txt
 	make -j6 -C gluon all GLUON_TARGET=x86-geode V=99 2>> $(PWD)/err.txt >> $(PWD)/out.txt
-	make -j6 C gluon all GLUON_TARGET=x86-64 V=99 2>> $(PWD)/err.txt >> $(PWD)/out.txt
+	make -j6 -C gluon all GLUON_TARGET=x86-64 V=99 2>> $(PWD)/err.txt >> $(PWD)/out.txt
 
 	#Broadcom-targets
 	make -j6 -C gluon all GLUON_TARGET=brcm2708-bcm2708 V=99 2>> $(PWD)/err.txt >> $(PWD)/out.txt
