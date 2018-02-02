@@ -24,7 +24,3 @@ build:
     paths:
     - out.txt.xz
     - err.txt.xz
-
-  cache:
-    paths:
-    - ccache/
