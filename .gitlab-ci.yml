@@ -16,11 +16,7 @@ build:
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SSH_PRIVATE_KEY_RELEASE" | base64 -d)
   - rsync -e "ssh -4 -o StrictHostKeyChecking=no -p 2310" --delete -Havc dist/ gluon-release@www1.kbu.freifunk.net:/space/files/gluon-weekly/2017.1
-  - xz out.txt
-  - xz err.txt
+  - xz dist/out.txt
+  - xz dist/err.txt
   only:
   - master
-  artifacts:
-    paths:
-    - out.txt.xz
-    - err.txt.xz
