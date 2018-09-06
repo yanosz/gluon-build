@@ -1,22 +1,18 @@
 # GLUON-RELEASE to use
 ifndef GLUON_RELEASE
-	GLUON_RELEASE:=v2017.1.x
+	GLUON_RELEASE:=v2018.1.x
 endif
 
 #What branch in the site repos to use?
 ifndef SITE_BRANCH
-  	SITE_BRANCH:=v2017.1-no-autoupdate
+  	SITE_BRANCH:=master
 endif
 
 #What hoods to use?
 ifndef KBU_HOODS
-	KBU_HOODS:=ffkbu ffkbuk ffkbuu
+	KBU_HOODS:=koeln bonn umgebung
 endif
 
-#What's the repository prefix
-ifndef REPOSITORY_PREFIX
-	REPOSITORY_PREFIX:=https://git.kbu.freifunk.net/ff-kbu/
-endif
 
 ###
 ### Nothing to be changed from here
@@ -40,10 +36,10 @@ init: gluon/Makefile
 
 .PHONY: dist/% init clean clean-% dist world
 # Create a distribution for a certain gluon
-dist/%: init site-%
-	cp site-$*/site.mk $(PWD)/gluon/site
-	cp site-$*/site.conf $(PWD)/gluon/site
-	cp -a site-$*/i18n/* $(PWD)/gluon/site/i18n
+dist/%: init
+	cp site/site.mk $(PWD)/gluon/site
+	DOMAIN=$* envsubst < site/site.conf > $(PWD)/gluon/site/site.conf
+	cp -a site/i18n/* $(PWD)/gluon/site/i18n
 	make -C gluon update
 	
 	#ar71xx-targets
@@ -68,17 +64,11 @@ dist/%: init site-%
 	echo "Git status hood $*" >> $(PWD)/dist/log.txt
 	cd $(PWD)/site-$*; git branch -v >> $(PWD)/dist/log.txt
 
-site-%:
-	git clone $(REPOSITORY_PREFIX)site-$*.git -b $(SITE_BRANCH) 
-
-
 gluon/Makefile:
 	git clone https://github.com/freifunk-gluon/gluon.git -b $(GLUON_RELEASE)
 	mkdir -p $(PWD)/gluon/site/i18n
 
-clean: $(addprefix clean-,$(KBU_HOODS))
+clean:
 	rm -Rf dist
 
-clean-%:
-	rm -Rf site-$*
 
