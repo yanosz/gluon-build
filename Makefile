@@ -40,6 +40,7 @@ dist/%: init
 	cp site/site.mk $(PWD)/gluon/site
 	DOMAIN=$* envsubst < site/site.conf > $(PWD)/gluon/site/site.conf
 	cp -a site/i18n/* $(PWD)/gluon/site/i18n
+	cp -a site/domains $(PWD)/gluon/site
 	make -C gluon update
 	
 	#ar71xx-targets
