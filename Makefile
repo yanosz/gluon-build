@@ -61,9 +61,9 @@ dist/%: init
 	make -j6 -C gluon all GLUON_TARGET=ramips-mt7621 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
 
 	mv $(PWD)/gluon/output $(PWD)/dist/$*
-	cp -a site-$* $(PWD)/dist/$*/site-$*
-	echo "Git status hood $*" >> $(PWD)/dist/log.txt
-	cd $(PWD)/site-$*; git branch -v >> $(PWD)/dist/log.txt
+	#cp -a site-$* $(PWD)/dist/$*/site-$*
+	#echo "Git status hood $*" >> $(PWD)/dist/log.txt
+	#cd $(PWD)/site-$*; git branch -v >> $(PWD)/dist/log.txt
 
 gluon/Makefile:
 	git clone https://github.com/freifunk-gluon/gluon.git -b $(GLUON_RELEASE)
