@@ -167,7 +167,7 @@ GLUON_TLWDR4900_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(TOOLS_PACKAGES) $(USB_P
 #		to decide if a version is newer or not.
 
 # Firmware name pattern
-DEFAULT_GLUON_RELEASE := 2017.1-exp$(shell date '+%Y%m%d')
+DEFAULT_GLUON_RELEASE := 2018.1-exp$(shell date '+%Y%m%d')
 
 ##	GLUON_RELEASE
 #		call make with custom GLUON_RELEASE flag, to use your own release version scheme.
