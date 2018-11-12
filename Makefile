@@ -44,21 +44,26 @@ dist/%: init
 	make -C gluon update
 	
 	#ar71xx-targets
-	make -j6 -C gluon all GLUON_TARGET=ar71xx-tiny V=99 2> $(PWD)/dist/err.ext > $(PWD)/dist/out.txt
-	make -j6 -C gluon all GLUON_TARGET=ar71xx-generic V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
-	
+	make -C gluon all GLUON_TARGET=ar71xx-tiny V=99 2> $(PWD)/dist/err.ext > $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=ar71xx-generic V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon clean	
+
 	#x86-targets
-	make -j6 -C gluon all GLUON_TARGET=x86-generic V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
-	make -j6 -C gluon all GLUON_TARGET=x86-geode V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
-	make -j6 -C gluon all GLUON_TARGET=x86-64 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=x86-generic V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=x86-geode V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=x86-64 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon clean
 
 	#Broadcom-targets
-	make -j6 -C gluon all GLUON_TARGET=brcm2708-bcm2708 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
-	make -j6 -C gluon all GLUON_TARGET=brcm2708-bcm2709 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=brcm2708-bcm2708 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=brcm2708-bcm2709 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon clean
+
 
 	# Misc targets
-	make -j6 -C gluon all GLUON_TARGET=mpc85xx-generic V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
-	make -j6 -C gluon all GLUON_TARGET=ramips-mt7621 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=mpc85xx-generic V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon all GLUON_TARGET=ramips-mt7621 V=99 2>> $(PWD)/dist/err.ext >> $(PWD)/dist/out.txt
+	make -C gluon clean
 
 	mv $(PWD)/gluon/output $(PWD)/dist/$*
 	#cp -a site-$* $(PWD)/dist/$*/site-$*
