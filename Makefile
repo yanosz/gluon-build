@@ -1,11 +1,6 @@
 # GLUON-RELEASE to use
 ifndef GLUON_RELEASE
-	GLUON_RELEASE:=v2018.1.x
-endif
-
-#What branch in the site repos to use?
-ifndef SITE_BRANCH
-  	SITE_BRANCH:=master
+	GLUON_RELEASE:=v2018.1.1
 endif
 
 #What hoods to use?
