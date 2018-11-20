@@ -48,9 +48,9 @@ dist/%: init
 	make -C gluon update
 
 	for target in $(TARGETS) ; do \
-		make -C gluon all GLUON_TARGET=$$target V=99 2> $(PWD)/dist/err.ext > $(PWD)/dist/out.txt; \
+		make -j2 -C gluon all GLUON_TARGET=$$target V=99 2> $(PWD)/dist/err.txt > $(PWD)/dist/out.txt; \
 		mv $(PWD)/gluon/output $(PWD)/dist/$*; \
-		make -C gluon clean GLUON_TARGET=$$target V=99 2> $(PWD)/dist/err.ext > $(PWD)/dist/out.txt; \
+		make -C gluon clean GLUON_TARGET=$$target V=99 2> $(PWD)/dist/err.txt > $(PWD)/dist/out.txt; \
 	done
 
 gluon/Makefile:
