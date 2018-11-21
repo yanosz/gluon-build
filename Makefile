@@ -1,6 +1,6 @@
 # GLUON-RELEASE to use
 ifndef GLUON_RELEASE
-	GLUON_RELEASE:=v2018.1.1
+	GLUON_RELEASE:=v2018.1.2
 endif
 
 #What hoods to use?
@@ -9,7 +9,7 @@ ifndef KBU_HOODS
 endif
 
 ifndef TARGETS
-	TARGETS:=ar71xx-tiny ar71xx-generic x86-generic x86-geode x86-64 brcm2708-bcm2708 brcm2708-bcm2709 mpc85xx-generic ramips-mt7621
+	TARGETS:=ar71xx-tiny ar71xx-generic ar71xx-nand x86-generic x86-geode x86-64 brcm2708-bcm2708 brcm2708-bcm2709 mpc85xx-generic ramips-mt7621
 endif
 
 
@@ -44,9 +44,9 @@ dist/%: init
 
 	for target in $(TARGETS) ; do \
 		make -j2 -C gluon all GLUON_TARGET=$$target V=99 2> $(PWD)/dist/err.txt > $(PWD)/dist/out.txt; \
-		mv $(PWD)/gluon/output $(PWD)/dist/$*; \
-		make -C gluon clean GLUON_TARGET=$$target V=99 2> $(PWD)/dist/err.txt > $(PWD)/dist/out.txt; \
+		make -C gluon clean GLUON_TARGET=$$target; \
 	done
+	mv $(PWD)/gluon/output $(PWD)/dist/$*
 
 gluon/Makefile:
 	git clone https://github.com/freifunk-gluon/gluon.git -b $(GLUON_RELEASE)
