@@ -46,11 +46,12 @@ dist/%: init
 	for hood in $(KBU_HOODS) ; do \
 		mkdir -p $(PWD)/dist/$$hood; \
 		DOMAIN=$$hood envsubst < site/site.conf > $(PWD)/gluon/site/site.conf; \
-		make -j2 -C gluon all GLUON_TARGET=$* V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt; \
+		make -j20 -C gluon all GLUON_TARGET=$* V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt; \
 		make -C gluon clean GLUON_TARGET=$*; \
 		rsync -Hav $(PWD)/gluon/output/images/ $(PWD)/dist/$$hood/; \
 	done
 	mv $(PWD)/gluon/output/packages/* $(PWD)/dist
+	rm -rf $(PWD)/gluon/output/*
 
 gluon/Makefile:
 	git clone https://github.com/freifunk-gluon/gluon.git -b $(GLUON_RELEASE)
