@@ -25,6 +25,7 @@ dist: $(addprefix dist/,$(TARGETS))
 
 # Log Build
 init: gluon/Makefile
+	mkdir $(PWD)/dist
 	date > $(PWD)/dist/log.txt
 	@echo "GLUON_RELEASE: $(GLUON_RELEASE)" >> $(PWD)/dist/log.txt
 	@echo "REPOSITORY_PREFIX: $(REPOSITORY_PREFIX)" >> $(PWD)/dist/log.txt
