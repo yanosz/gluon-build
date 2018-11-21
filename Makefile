@@ -20,12 +20,11 @@ endif
 world: dist
 
 # Create all distribution artifacts in ./dist
-dist: $(addprefix dist/,$(KBU_HOODS))
+dist: $(addprefix dist/,$(TARGETS))
 	find $(PWD)/dist -type f -print0  | xargs -0 sha512sum > $(PWD)/dist/sha512sums
 
 # Log Build
 init: gluon/Makefile
-	mkdir -p $(PWD)/dist
 	date > $(PWD)/dist/log.txt
 	@echo "GLUON_RELEASE: $(GLUON_RELEASE)" >> $(PWD)/dist/log.txt
 	@echo "REPOSITORY_PREFIX: $(REPOSITORY_PREFIX)" >> $(PWD)/dist/log.txt
@@ -36,17 +35,21 @@ init: gluon/Makefile
 .PHONY: dist/% init clean clean-% dist world
 # Create a distribution for a certain gluon
 dist/%: init
-	cp site/site.mk $(PWD)/gluon/site
 	DOMAIN=$* envsubst < site/site.conf > $(PWD)/gluon/site/site.conf
-	cp -a site/i18n/* $(PWD)/gluon/site/i18n
-	cp -a site/domains $(PWD)/gluon/site
+	cp -a site/* $(PWD)/gluon/site/
 	make -C gluon update
 
-	for target in $(TARGETS) ; do \
-		make -j2 -C gluon all GLUON_TARGET=$$target V=99 2> $(PWD)/dist/err.txt > $(PWD)/dist/out.txt; \
-		make -C gluon clean GLUON_TARGET=$$target; \
+	echo "Building Target: $*" >> $(PWD)/dist/out.txt
+	echo "Building Target: $*" >> $(PWD)/dist/err.txt
+
+	for hood in $(KBU_HOODS) ; do \
+		mkdir -p $(PWD)/dist/$$hood; \
+		DOMAIN=$$hood envsubst < site/site.conf > $(PWD)/gluon/site/site.conf; \
+		make -j2 -C gluon all GLUON_TARGET=$* V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt; \
+		make -C gluon clean GLUON_TARGET=$*; \
+		rsync -Hav $(PWD)/gluon/output/images/ $(PWD)/dist/$$hood/; \
 	done
-	mv $(PWD)/gluon/output $(PWD)/dist/$*
+	mv $(PWD)/gluon/output/packages/* $(PWD)/dist
 
 gluon/Makefile:
 	git clone https://github.com/freifunk-gluon/gluon.git -b $(GLUON_RELEASE)
