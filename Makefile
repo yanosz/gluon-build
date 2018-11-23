@@ -21,6 +21,7 @@ world: dist
 
 # Create all distribution artifacts in ./dist
 dist: $(addprefix dist/,$(TARGETS))
+	mv $(PWD)/gluon/output/packages $(PWD)/dist
 	find $(PWD)/dist -type f -print0  | xargs -0 sha512sum > $(PWD)/dist/sha512sums
 
 # Log Build
@@ -49,9 +50,7 @@ dist/%: init
 		make -j20 -C gluon all GLUON_TARGET=$* V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt; \
 		rsync -Hav $(PWD)/gluon/output/images/ $(PWD)/dist/$$hood/; \
 	done
-	@echo mv $(PWD)/gluon/output/packages $(PWD)/dist
 	make -C gluon clean GLUON_TARGET=$*
-	@echo rm -rf $(PWD)/gluon/output/*
 
 gluon/Makefile:
 	git clone https://github.com/freifunk-gluon/gluon.git -b $(GLUON_RELEASE)
