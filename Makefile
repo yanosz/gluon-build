@@ -47,7 +47,7 @@ dist/%: init
 	for hood in $(KBU_HOODS) ; do \
 		mkdir -p $(PWD)/dist/$$hood; \
 		DOMAIN=$$hood envsubst < site/site.conf > $(PWD)/gluon/site/site.conf; \
-		make -j20 -C gluon all GLUON_TARGET=$* V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt; \
+		make -j2 -C gluon all GLUON_TARGET=$* V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt; \
 		rsync -Hav $(PWD)/gluon/output/images/ $(PWD)/dist/$$hood/; \
 	done
 	make -C gluon clean GLUON_TARGET=$*
