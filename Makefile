@@ -1,6 +1,6 @@
 # GLUON-RELEASE to use
 ifndef GLUON_RELEASE
-	GLUON_RELEASE:=v2018.1.2
+	GLUON_RELEASE:=v2018.1.3
 endif
 
 #What hoods to use?
