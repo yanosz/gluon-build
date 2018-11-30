@@ -22,7 +22,21 @@ msgstr ""
 "In other communities you often have to send it in or something similar."
 ""
 ""
+msgid "gluon-config-mode:domain-select"
+msgstr ""
+"What's your Hood (geographic area)?"
 
+msgid "gluon-config-mode:domain"
+msgstr ""
+"Hood"
+
+msgid "gluon-config-mode:altitude-label"
+msgstr ""
+"Altitude (in meters)"
+
+msgid "gluon-config-mode:altitude-help"
+msgstr ""
+""
 
 msgid "gluon-config-mode:reboot"
 msgstr ""

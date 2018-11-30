@@ -25,6 +25,10 @@ msgstr ""
 "Die Nodes prüfen aber die Schlüssel/Authentizität der KBU Server."
 ""
 
+msgid "gluon-config-mode:altitude-label"
+msgstr ""
+"Höhe (in Metern)"
+
 msgid "gluon-config-mode:reboot"
 msgstr ""
 "<p>Dein Knoten startet gerade neu und wird anschließend versuchen, "
@@ -38,3 +42,15 @@ msgstr ""
 "<p>Viel Spaß mit deinem Knoten und der Erkundung von Freifunk!</p>"
 "<p>Vergesst nicht: Freifunk ist mehr als nur Internt.</p>"
 "<p>Be excellent to each other.</p>"
+
+msgid "gluon-config-mode:domain-select"
+msgstr ""
+"In welcher Hood (geographischer Bereich) befindet sich der Knoten?"
+
+msgid "gluon-config-mode:domain"
+msgstr ""
+"Hood"
+
+msgid "gluon-config-mode:altitude-help"
+msgstr ""
+""
