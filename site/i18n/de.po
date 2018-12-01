@@ -18,11 +18,6 @@ msgstr ""
 
 msgid "gluon-config-mode:pubkey"
 msgstr ""
-"Dies ist der öffentliche Schlüssel deines Freifunk-Knotens. KBU Server akzeptieren"
-"alle Schlüssel, daher kein weiteres registrieren oder emailen notwendig. "
-"Bei anderen Communities schickt man den  "
-"Schlüssel/registriert sich vorher."
-"Die Nodes prüfen aber die Schlüssel/Authentizität der KBU Server."
 ""
 
 msgid "gluon-config-mode:altitude-label"
