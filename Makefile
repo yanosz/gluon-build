@@ -1,11 +1,11 @@
 # GLUON-RELEASE to use
 ifndef GLUON_RELEASE
-	GLUON_RELEASE:=v2018.1.3
+	GLUON_RELEASE:=v2018.2
 endif
 
 #What targets to use?
 ifndef TARGETS
-	TARGETS:=ar71xx-tiny ar71xx-generic ar71xx-nand x86-generic x86-geode x86-64 brcm2708-bcm2708 brcm2708-bcm2709 mpc85xx-generic ramips-mt7621
+	TARGETS:=ar71xx-tiny ar71xx-generic ar71xx-nand x86-generic x86-geode x86-64 brcm2708-bcm2708 brcm2708-bcm2709 mpc85xx-generic ramips-mt76x8 ramips-mt7621 sunxi-cortexa7
 endif
 
 

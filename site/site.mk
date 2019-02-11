@@ -9,7 +9,8 @@ GLUON_SITE_PACKAGES := \
 	gluon-respondd \
 	gluon-config-mode-contact-info \
 	gluon-config-mode-geo-location \
-	gluon-config-mode-hostname \
+	gluon-config-mode-geo-location-osm \
+        gluon-config-mode-hostname \
 	gluon-config-mode-mesh-vpn \
 	gluon-ebtables-filter-multicast \
 	gluon-ebtables-filter-ra-dhcp \
@@ -189,4 +190,5 @@ GLUON_LANGS ?= en de
 # Region settings for ARCHERC7
 GLUON_REGION ?= eu
 
-#GLUON_ATH10K_MESH = ibss
+GLUON_WLAN_MESH = ibss
+
