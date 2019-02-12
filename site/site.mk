@@ -190,5 +190,4 @@ GLUON_LANGS ?= en de
 # Region settings for ARCHERC7
 GLUON_REGION ?= eu
 
-GLUON_WLAN_MESH = ibss
-
+GLUON_WLAN_MESH = 11s
