@@ -24,7 +24,7 @@ GLUON_SITE_PACKAGES := \
 	haveged \
 	iptables \
 	iwinfo \
-	gluon-config-mode-domain-select
+	gluon-hoodselector
 
 # basic support for USB stack
 USB_PACKAGES_BASIC := \
