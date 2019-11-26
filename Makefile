@@ -1,6 +1,6 @@
 # GLUON-RELEASE to use
 ifndef GLUON_RELEASE
-	GLUON_RELEASE:=v2018.2
+	GLUON_RELEASE:=v2019.1
 endif
 
 #What targets to use?
@@ -34,16 +34,16 @@ init: gluon/Makefile
 # Create a distribution for a certain gluon
 dist/%: init
 	cp -a site/* $(PWD)/gluon/site/
-	make -C gluon update
+	make -C gluon GLUON_DEPRECATED=1 update
 
 	echo "Building Target: $*" >> $(PWD)/dist/out.txt
 	echo "Building Target: $*" >> $(PWD)/dist/err.txt
 
 	mkdir -p $(PWD)/dist/
-	make -j2 -C gluon all BROKEN=1 GLUON_TARGET=$* V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt
+	make -j2 -C gluon all BROKEN=1 GLUON_TARGET=$* GLUON_DEPRECATED=1 V=99 2>> $(PWD)/dist/err.txt >> $(PWD)/dist/out.txt
 	rsync -Hav $(PWD)/gluon/output/images/ $(PWD)/dist/
 
-	make -C gluon clean BROKEN=1 GLUON_TARGET=$*
+	make -C gluon clean BROKEN=1 GLUON_DEPRECATED=1  GLUON_TARGET=$*
 
 gluon/Makefile:
 	git clone https://github.com/freifunk-gluon/gluon.git -b $(GLUON_RELEASE)
