@@ -18,4 +18,4 @@ build:
   - xz dist/*.txt
   - rsync -e "ssh -4 -o StrictHostKeyChecking=no -p 2310" --delete -Ha dist/ gluon-release@www1.kbu.freifunk.net:/space/files/gluon-weekly/v2018.2
   only:
-  - master
+  - 2018.2
