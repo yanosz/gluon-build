@@ -21,7 +21,6 @@ GLUON_SITE_PACKAGES := \
 	gluon-web-wifi-config \
 	gluon-mesh-vpn-fastd \
 	gluon-status-page \
-	haveged \
 	iptables \
 	iwinfo \
 	gluon-hoodselector

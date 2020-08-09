@@ -1,6 +1,6 @@
 # GLUON-RELEASE to use
 ifndef GLUON_RELEASE
-	GLUON_RELEASE:=v2019.1
+	GLUON_RELEASE:=v2020.2
 endif
 
 #What targets to use?
