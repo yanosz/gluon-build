@@ -5,7 +5,7 @@ endif
 
 #What targets to use?
 ifndef TARGETS
-	TARGETS:=ipq40xx ar71xx-tiny ar71xx-generic ar71xx-nand x86-generic x86-geode x86-64 brcm2708-bcm2708 brcm2708-bcm2709 mpc85xx-generic ramips-mt7621 sunxi-cortexa7
+	TARGETS:=ipq40xx-generic ipq806x-generic ath79-generic lantiq-xrx200 lantiq-xrx200 mpc85xx-generic mpc85xx-p1020 ar71xx-tiny ar71xx-generic ar71xx-nand x86-generic x86-geode x86-64 brcm2708-bcm2708 brcm2708-bcm2709 mpc85xx-generic ramips-mt7621 sunxi-cortexa7 ramips-mt7621 ramips-mt76x8 ramips-rt305x 
 endif
 
 
